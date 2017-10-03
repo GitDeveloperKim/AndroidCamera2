@@ -291,6 +291,7 @@ public class Camera2BasicFragment extends Fragment
             switch (mState) {
                 case STATE_PREVIEW: {
                     // We have nothing to do when the camera preview is working normally.
+                    Log.d(TAG,"STATE_PREVIEW");
                     break;
                 }
                 case STATE_WAITING_LOCK: {
