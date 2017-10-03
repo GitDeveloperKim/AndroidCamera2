@@ -1,0 +1,26 @@
+[
+    {
+        "outputFile": "C:\\Users\\default.DESKTOP-J037LQQ\\AndroidStudioProjects\\Camera2Basic\\Application\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-ldltr-v21\\values-ldltr-v21.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 112,
+                    "endOffset": 163
+                },
+                "from": {
+                    "file": "C:\\Users\\default.DESKTOP-J037LQQ\\.android\\build-cache\\c8d6692904b2cccb47b66e8c9851ca79407011e6\\output\\res\\values-ldltr-v21\\values-ldltr-v21.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 112,
+                        "endOffset": 163
+                    }
+                }
+            }
+        ]
+    }
+]
