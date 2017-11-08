@@ -1,4 +1,4 @@
-#Thu May 04 08:28:37 KST 2017
+#Thu Oct 05 00:20:11 KST 2017
 file.2=C\:\\Users\\default.DESKTOP-J037LQQ\\AndroidStudioProjects\\Camera2Basic\\Application\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_f7fd039d3a2ec8d8b0d24319fd5ebc7de33f66db\\classes.dex
 base.2=C\:\\Users\\default.DESKTOP-J037LQQ\\AndroidStudioProjects\\Camera2Basic\\Application\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_f7fd039d3a2ec8d8b0d24319fd5ebc7de33f66db
 file.1=C\:\\Users\\default.DESKTOP-J037LQQ\\AndroidStudioProjects\\Camera2Basic\\Application\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\classes_9ba9ae613010d7039b68a03532420fe1d91b6069\\classes.dex

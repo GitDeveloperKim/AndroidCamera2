@@ -73,6 +73,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Camera2BasicFragment extends Fragment
         implements View.OnClickListener, FragmentCompat.OnRequestPermissionsResultCallback {
+    static int capture_count = 0;
 
     /**
      * Conversion from screen rotation to JPEG orientation.
@@ -431,6 +432,13 @@ public class Camera2BasicFragment extends Fragment
         view.findViewById(R.id.picture).setOnClickListener(this);
         view.findViewById(R.id.info).setOnClickListener(this);
         mTextureView = (AutoFitTextureView) view.findViewById(R.id.texture);
+
+        mTextureView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showToast("touch");
+            }
+        });
     }
 
     @Override
@@ -706,7 +714,8 @@ public class Camera2BasicFragment extends Fragment
                             try {
                                 // Auto focus should be continuous for camera preview.
                                 mPreviewRequestBuilder.set(CaptureRequest.CONTROL_AF_MODE,
-                                        CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE);
+                                        CaptureRequest.CONTROL_AF_MODE_AUTO);
+                                        //CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE);
                                 // Flash is automatically enabled when necessary.
                                 setAutoFlash(mPreviewRequestBuilder);
 
@@ -768,7 +777,8 @@ public class Camera2BasicFragment extends Fragment
      * Initiate a still image capture.
      */
     private void takePicture() {
-        lockFocus();
+        //lockFocus();
+        captureStillPicture();
     }
 
     /**
@@ -823,7 +833,8 @@ public class Camera2BasicFragment extends Fragment
 
             // Use the same AE and AF modes as the preview.
             captureBuilder.set(CaptureRequest.CONTROL_AF_MODE,
-                    CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE);
+                    //CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE);
+                    CaptureRequest.CONTROL_AF_MODE_AUTO);
             setAutoFlash(captureBuilder);
 
             // Orientation
@@ -839,7 +850,8 @@ public class Camera2BasicFragment extends Fragment
                                                @NonNull TotalCaptureResult result) {
                     showToast("Saved: " + mFile);
                     Log.d(TAG, mFile.toString());
-                    unlockFocus();
+                    startPreview();
+                    //unlockFocus();
                 }
             };
 
@@ -885,6 +897,18 @@ public class Camera2BasicFragment extends Fragment
         }
     }
 
+    private void startPreview() {
+        try {
+            // Reset the auto-focus trigger
+            // After this, the camera will go back to the normal state of preview.
+            mState = STATE_PREVIEW;
+            mCaptureSession.setRepeatingRequest(mPreviewRequest, mCaptureCallback,
+                    mBackgroundHandler);
+        } catch (CameraAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -915,7 +939,7 @@ public class Camera2BasicFragment extends Fragment
     /**
      * Saves a JPEG {@link Image} into the specified {@link File}.
      */
-    private static class ImageSaver implements Runnable {
+    private class ImageSaver implements Runnable {
 
         /**
          * The JPEG image
@@ -951,6 +975,13 @@ public class Camera2BasicFragment extends Fragment
                         e.printStackTrace();
                     }
                 }
+            }
+
+            if (capture_count < 3) {
+                capture_count++;
+                captureStillPicture();
+            } else {
+                showToast("capture success");
             }
         }
 
