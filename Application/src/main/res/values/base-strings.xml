@@ -16,7 +16,7 @@
 -->
 
 <resources>
-    <string name="app_name">StandardCamera</string>
+    <string name="app_name">BuddyCamera</string>
     <string name="intro_message">
         <![CDATA[
         

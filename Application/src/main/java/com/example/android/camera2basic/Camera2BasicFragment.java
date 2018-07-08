@@ -1055,6 +1055,7 @@ public class Camera2BasicFragment extends Fragment
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     Activity activity = parent.getActivity();
+
                                     if (activity != null) {
                                         activity.finish();
                                     }
